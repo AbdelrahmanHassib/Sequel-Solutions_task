@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "Poppins_Regular";
+    src: local("Poppins-Regular"),
+    url("/src/fonts/Poppins-Regular.ttf") format("truetype");
+}
+
+.text-div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+label {
+    margin-left: 12px;
+    font-family: "Poppins_Regular";
+    font-size: 15px;
+    color: #333333;
+}
+
+.custom_input {
+    padding-left: 32px;
+    font-family: "Inter";
+    margin-bottom: 13px;
+    height: 34px;
+}
+
+.custom_input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}

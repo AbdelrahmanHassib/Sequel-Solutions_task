@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "Poppins";
+    src: local("Poppins-SemiBoldItalic"),
+    url("/src/fonts/Poppins-SemiBoldItalic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins_SemiBold";
+    src: local("Poppins-SemiBold"),
+    url("/src/fonts/Poppins-SemiBold.ttf") format("truetype");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins";
+    background-color: #E7F3F0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-paragraph {
+    color: #828282;
+}
+
+a {
+    text-decoration: none;
+    color: #00896D;
+}
+
+.custom-button {
+    margin-top: 24px;
+    margin-bottom: 32px;
+}
+
+.sign-up-h3 {
+    font-family: "Poppins_SemiBold";
+    margin-top: 26px;
+    margin-bottom: 32px;
+}
+
+form {
+    width: 410px;
+}

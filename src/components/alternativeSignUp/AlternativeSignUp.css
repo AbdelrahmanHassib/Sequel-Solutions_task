@@ -1,0 +1,10 @@
+#alternative-signup-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#alternative-signup-h3 {
+    color: #BDBDBD;
+    font-family: "Inter";
+    margin-bottom: 16px;
+}
