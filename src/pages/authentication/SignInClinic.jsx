@@ -6,26 +6,52 @@ import TextInputComponent from "../../components/textInputComponent/TextInputCom
 import "./SignInClinic.css";
 export default function SignIn() {
   return (
-    <div className="flex">
+    <div className="authentication-divs">
       <Logo />
-      <h3 className="sign-in-h3">Sign in as a clinic</h3>
+      <h3 className="sign-in-clinic-h3">Sign in as a clinic</h3>
       <TextInputComponent
         placeholder="Ex: twoth@example"
         label="Email"
         type="email"
+        style={{
+          border: "1px solid rgba(0, 137, 109, 0.41)",
+          boxShadow: "0px 3px 9px -2px rgba(0, 0, 0, 0.2)",
+          borderRadius: "6px",
+          height: "43px",
+        }}
       />
       <TextInputComponent
         placeholder="****************"
         label="Password"
         type="password"
+        style={{
+          border: "1px solid rgba(0, 137, 109, 0.41)",
+          boxShadow: "0px 3px 9px -2px rgba(0, 0, 0, 0.2)",
+          borderRadius: "6px",
+          height: "43px",
+        }}
       />
-      <CustomButton name="Sign In" />
+      <CustomButton
+        style={{
+          margin: "32px 0",
+          fontFamily: "Inter_SemiBold",
+          fontSize: "16px",
+        }}
+      >
+        Sign in
+      </CustomButton>
       <AlternativeSignUp />
-      <p className="bottom-paragraph">
-        You don't have an account? <a href="/signup">Sign up</a>
+      <p className="bottom-paragraph-sign-in-clinic">
+        You don't have an account?{" "}
+        <a href="/signup" className="sign-in-a">
+          Sign up
+        </a>
       </p>
-      <p className="bottom-paragraph">
-        You are a dentist? Sign in <a href="/signin/dentist">Sign in</a>
+      <p className="bottom-paragraph-sign-in-clinic">
+        You are a dentist?{" "}
+        <a href="/signin/dentist" className="sign-in-a">
+          Sign in
+        </a>
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import AlternativeSignUp from "../../components/alternativeSignUp/AlternativeSignUp";
 import CustomButton from "../../components/customButton/CustomButton";
 import Logo from "../../components/logo/Logo";
@@ -6,11 +7,31 @@ import TextInputComponent from "../../components/textInputComponent/TextInputCom
 import "./SignInDentist.css";
 export default function SignIn_Dentist() {
   return (
-    <div className="flex">
+    <div className="authentication-divs">
       <Logo />
-      <h3 className="sign-in-h3">Sign in as a dentist</h3>
-      <TextInputComponent placeholder="Ex: twoth@example" />
-      <CustomButton name="Sign In" />
+      <h3 className="sign-in-dentist-h3">Sign in as a dentist</h3>
+      <TextInputComponent
+        placeholder="Ex: twoth@example"
+        label="Email"
+        type="email"
+        style={{
+          border: "1px solid rgba(0, 137, 109, 0.41)",
+          boxShadow: "0px 3px 9px -2px rgba(0, 0, 0, 0.2)",
+          borderRadius: "6px",
+          height: "43px",
+        }}
+      />
+      <NavLink to="/threedivslayout">
+        <CustomButton
+          style={{
+            fontFamily: "Inter_SemiBold",
+            fontSize: "16px",
+            margin: "32px 0",
+          }}
+        >
+          Sign in
+        </CustomButton>
+      </NavLink>
       <AlternativeSignUp />
     </div>
   );

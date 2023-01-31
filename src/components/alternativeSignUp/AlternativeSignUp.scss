@@ -1,0 +1,31 @@
+#alternative-signup-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#alternative-signup-h3 {
+    color: #BDBDBD;
+    font-family: "Inter_Regular";
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0;
+}
+
+.alt-sign-up-main-div {
+    display: flex;
+    justify-content: space-between;
+    width: "100%";
+}
+
+.alt-sign-up-secondary-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    p {
+        margin: 0;
+        font-family: "Poppins_Regular";
+        font-size: 12px;
+    }
+}
