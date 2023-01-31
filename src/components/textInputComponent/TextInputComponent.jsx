@@ -14,6 +14,7 @@ export default function TextInputComponent({
   small_label_index,
   small_label_width,
   inlineSize,
+  onChange,
 }) {
   return (
     <div className="text-div">
@@ -56,6 +57,7 @@ export default function TextInputComponent({
       )}
       {type === "password" ? (
         <Input.Password
+          onChange={onChange}
           className="custom_input"
           type={type}
           placeholder={placeholder}
@@ -64,6 +66,7 @@ export default function TextInputComponent({
         />
       ) : (
         <Input
+          onChange={onChange}
           className="custom_input"
           type={type}
           placeholder={placeholder}

@@ -220,6 +220,7 @@ export default function TableComponent() {
                     fontFamily: "Inter_Medium",
                     fontSize: "16px",
                     paddingRight: "20px",
+                    cursor: "pointer",
                   }}
                 >
                   {row.remove}

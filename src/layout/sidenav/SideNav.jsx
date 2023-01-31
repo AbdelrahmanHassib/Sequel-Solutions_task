@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import CustomButton from "../../components/customButton/CustomButton";
 import Logo from "../../components/logo/Logo";
+import { RemoveUserData } from "../../service/localStorageService";
 import "./SideNav.scss";
 export default function SideNav() {
   const patients = [
@@ -15,16 +16,21 @@ export default function SideNav() {
     "Kianna Aminoff",
     "Cooper Septimus",
   ];
-  let isPlan = true;
+  const [isPlan, setIsPlan] = React.useState(true);
   const logOut = () => {
     const confirm = window.confirm("Are you sure you want to log out?");
     if (confirm) {
+      RemoveUserData();
       window.location.href = "/signin/clinic";
     }
   };
 
   function clearPlans() {
-    isPlan = !isPlan;
+    setIsPlan((prev) => false);
+  }
+
+  function generatePlans() {
+    setIsPlan((prev) => true);
   }
 
   return (
@@ -48,33 +54,45 @@ export default function SideNav() {
           }}
           styleLogo={{ width: "55px" }}
         />
-        <CustomButton
-          style={{
-            color: "#00896D",
-            backgroundColor: "#FFFFFF",
-            height: "43px",
-            border: "1px solid #00896D",
-            boxShadow: "0px 3px 9px -2px rgba(0, 0, 0, 0.2)",
-            fontFamily: "Inter_Medium",
-            fontSize: "16px",
-          }}
-        >
-          + New plan
-        </CustomButton>
-        <div className="side-nav-para-div">
-          <p className="side-nav-para">Kianna Bergson</p>
+        <div onClick={generatePlans}>
+          <CustomButton
+            style={{
+              color: "#00896D",
+              backgroundColor: "#FFFFFF",
+              height: "43px",
+              border: "1px solid #00896D",
+              boxShadow: "0px 3px 9px -2px rgba(0, 0, 0, 0.2)",
+              fontFamily: "Inter_Medium",
+              fontSize: "16px",
+            }}
+          >
+            + New plan
+          </CustomButton>
         </div>
-        <ul className="first-div-one-ul">
-          {patients.map((el) => (
-            <li style={{ color: "#052B33" }}>{el}</li>
-          ))}
-        </ul>
+        {isPlan ? (
+          <div>
+            <div className="side-nav-para-div">
+              <p className="side-nav-para">Kianna Bergson</p>
+            </div>
+            <ul className="first-div-one-ul">
+              {patients.map((el) => (
+                <li style={{ color: "#052B33" }}>{el}</li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div style={{ height: "334px" }}>
+            <div className="side-nav-para-div">
+              <p className="side-nav-para">Create New Plan</p>
+            </div>
+          </div>
+        )}
       </div>
       <div style={{ border: "1px solid #828282" }}></div>
       <div className="first-div-two">
         <div
           className="first-div-two-containers"
-          onClick={clearPlans()}
+          onClick={clearPlans}
           style={{ cursor: "pointer" }}
         >
           <img src={require("../../icons/trash.png")} alt="recycle bin icon" />

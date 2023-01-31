@@ -1,39 +1,57 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { React, useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import AlternativeSignUp from "../../components/alternativeSignUp/AlternativeSignUp";
 import CustomButton from "../../components/customButton/CustomButton";
 import Logo from "../../components/logo/Logo";
 import TextInputComponent from "../../components/textInputComponent/TextInputComponent";
+import { GetUserToken, SetUserData } from "../../service/localStorageService";
 import "./SignUp.css";
-// import { primaryColor } from "../../styles/primaryColor";
 export default function SignUp() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (GetUserToken("user")) navigate("/home");
+  }, [navigate]);
   const buttons = [
     {
       label: "Clinic's owner name",
       placeholder: "Ex: mahmoud barbary",
       type: "text",
+      name: "ownerName",
     },
     {
       label: "Clinic's full name",
       placeholder: "Ex: Twoth london",
       type: "text",
+      name: "fullName",
     },
     {
       label: "Clinic's email",
       placeholder: "Ex: twoth@example",
       type: "email",
+      name: "email",
     },
     {
       label: "Clinic's mobile number",
       placeholder: "Ex: +201061949054",
       type: "number",
+      name: "number",
     },
     {
       label: "Password",
       placeholder: "****************",
       type: "password",
+      name: "password",
     },
   ];
+  let [values, setvalues] = useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  let HandleChange = useCallback((e) => {
+    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
   return (
     <div className="authentication-divs">
       <Logo />
@@ -41,6 +59,9 @@ export default function SignUp() {
       <form>
         {buttons.map((el) => (
           <TextInputComponent
+            onChange={HandleChange}
+            value={values[el.name]}
+            name={el.name}
             label={el.label}
             placeholder={el.placeholder}
             type={el.type}
@@ -52,18 +73,20 @@ export default function SignUp() {
             }}
           />
         ))}
-        <NavLink to="/threedivslayout">
-          <CustomButton
-            className="custom-button"
-            style={{
-              margin: "11px 0 32px 0",
-              fontFamily: "Inter_SemiBold",
-              fontSize: "16px",
-            }}
-          >
-            Create account
-          </CustomButton>
-        </NavLink>
+        <CustomButton
+          onclick={() => {
+            SetUserData(values);
+            navigate("/home");
+          }}
+          className="custom-button"
+          style={{
+            margin: "11px 0 32px 0",
+            fontFamily: "Inter_SemiBold",
+            fontSize: "16px",
+          }}
+        >
+          Create account
+        </CustomButton>
       </form>
       <AlternativeSignUp />
       <p className="bottom-paragraph-sign-up">

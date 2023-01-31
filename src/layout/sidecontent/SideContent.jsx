@@ -1,12 +1,18 @@
 import React from "react";
+import Chat from "../../components/chat/Chat";
 import Clinicians from "../../components/clinicians/Clinicians";
 import CustomButton from "../../components/customButton/CustomButton";
 import TextEditorComponent from "../../components/textEditor/TextEditorComponent";
 import "./SideContent.scss";
 
 function Generated() {
+  function handleChat() {
+    document.getElementById("chat-div").classList.toggle("hide");
+  }
+
   return (
     <div className="third-div">
+      <Chat right="5%" />
       <div
         style={{
           position: "absolute",
@@ -18,23 +24,26 @@ function Generated() {
           right: "9px",
         }}
       ></div>
-      <span
+      <div
+        id="render-div"
         style={{
+          cursor: "pointer",
           margin: "40px 53px 49px auto",
           backgroundColor: "#61B5A4",
           borderRadius: "50%",
-          width: "42px",
-          height: "42px",
-          color: "#FFFFFF",
-          display: "block",
-          padding: "9px 11px",
-          fontFamily: "Inter_Medium",
-          fontSize: "20px",
           boxShadow: "0px 2px 6px 1px rgba(0, 137, 109, 0.2)",
+          fontSize: "20px",
+          fontFamily: "Inter_Medium",
+          height: "42px",
+          width: "42px",
+          color: "#FFFFFF",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
-        M
-      </span>
+        <span>M</span>
+      </div>
       <TextEditorComponent />
       <CustomButton
         style={{
@@ -68,6 +77,7 @@ function Generated() {
         </div>
       </CustomButton>
       <div
+        onClick={handleChat}
         style={{
           borderRadius: "50px",
           width: "70px",
@@ -76,6 +86,7 @@ function Generated() {
           padding: "20px",
           position: "relative",
           margin: "45px 13px 0 auto",
+          cursor: "pointer",
         }}
       >
         <div

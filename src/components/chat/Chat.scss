@@ -1,0 +1,20 @@
+.chat-div {
+        box-shadow: -2px 3px 7px -2px rgba(0, 0, 0, 0.25);
+        width: 400px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 15px;
+        position: absolute;
+        top: 34%;
+        right: 5%;
+        z-index: 9;
+        transition-property: right,left;
+        transition-duration: 0.2s;
+}
+
+.hide {
+    right: -650px;
+}

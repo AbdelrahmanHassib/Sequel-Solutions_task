@@ -1,15 +1,34 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import AlternativeSignUp from "../../components/alternativeSignUp/AlternativeSignUp";
 import CustomButton from "../../components/customButton/CustomButton";
 import Logo from "../../components/logo/Logo";
 import TextInputComponent from "../../components/textInputComponent/TextInputComponent";
+import { GetUserToken, SetUserData } from "../../service/localStorageService";
 import "./SignInClinic.css";
 export default function SignIn() {
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    if (GetUserToken("user")) navigate("/home");
+  }, [navigate]);
+  let [values, setvalues] = React.useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  let HandleChange = React.useCallback((e) => {
+    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
+
   return (
     <div className="authentication-divs">
       <Logo />
       <h3 className="sign-in-clinic-h3">Sign in as a clinic</h3>
       <TextInputComponent
+        onChange={HandleChange}
+        value={values.email}
+        name={"email"}
         placeholder="Ex: twoth@example"
         label="Email"
         type="email"
@@ -22,6 +41,9 @@ export default function SignIn() {
       />
       <TextInputComponent
         placeholder="****************"
+        onChange={HandleChange}
+        value={values.password}
+        name={"password"}
         label="Password"
         type="password"
         style={{
@@ -32,6 +54,17 @@ export default function SignIn() {
         }}
       />
       <CustomButton
+        onclick={() => {
+          if (
+            values.email === "admin@gmail.com" &&
+            values.password === "admin"
+          ) {
+            SetUserData(values);
+            navigate("/home");
+          } else {
+            alert("username or password incorrect");
+          }
+        }}
         style={{
           margin: "32px 0",
           fontFamily: "Inter_SemiBold",

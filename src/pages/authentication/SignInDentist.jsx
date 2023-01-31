@@ -6,11 +6,23 @@ import Logo from "../../components/logo/Logo";
 import TextInputComponent from "../../components/textInputComponent/TextInputComponent";
 import "./SignInDentist.css";
 export default function SignIn_Dentist() {
+  let [values, setvalues] = React.useState({
+    email: "",
+    password: "",
+    rememberMe: false,
+  });
+
+  let HandleChange = React.useCallback((e) => {
+    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
   return (
     <div className="authentication-divs">
       <Logo />
       <h3 className="sign-in-dentist-h3">Sign in as a dentist</h3>
       <TextInputComponent
+        onChange={HandleChange}
+        value={values.email}
+        name={"email"}
         placeholder="Ex: twoth@example"
         label="Email"
         type="email"
@@ -21,7 +33,7 @@ export default function SignIn_Dentist() {
           height: "43px",
         }}
       />
-      <NavLink to="/threedivslayout">
+      <NavLink to="/home">
         <CustomButton
           style={{
             fontFamily: "Inter_SemiBold",
